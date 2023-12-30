@@ -1,0 +1,29 @@
+int Base64Decode(char *param_1,void **param_2)
+
+{
+  int iVar1;
+  void *pvVar2;
+  size_t sVar3;
+  FILE *stream;
+  BIO_METHOD *type;
+  BIO *pBVar4;
+  BIO *append;
+  int iVar5;
+  
+  iVar1 = calcDecodeLength(param_1);
+  pvVar2 = malloc(iVar1 + 1);
+  *param_2 = pvVar2;
+  sVar3 = strlen(param_1);
+  stream = fmemopen(param_1,sVar3,"r");
+  type = BIO_f_base64();
+  pBVar4 = BIO_new(type);
+  append = BIO_new_fp(stream,0);
+  pBVar4 = BIO_push(pBVar4,append);
+  BIO_set_flags(pBVar4,0x100);
+  sVar3 = strlen(param_1);
+  iVar5 = BIO_read(pBVar4,*param_2,sVar3);
+  *(undefined *)(iVar5 + (int)*param_2) = 0;
+  BIO_free_all(pBVar4);
+  fclose(stream);
+  return iVar1;
+}

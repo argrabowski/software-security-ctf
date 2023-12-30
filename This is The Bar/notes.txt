@@ -1,0 +1,7 @@
+canary: rbp - 8
+buffer rbp - 0x20
+p 0x20 - 8: 24
+
+system_offset = 109264
+exit_offset = 67360
+binsh_offset = 1332470

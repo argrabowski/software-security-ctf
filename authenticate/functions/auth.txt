@@ -1,0 +1,14 @@
+bool auth(size_t param_1)
+
+{
+  int iVar1;
+  undefined local_18 [8];
+  char *local_10;
+  undefined auStack12 [8];
+  
+  memcpy(auStack12,input,param_1);
+  local_10 = (char *)calc_md5(local_18,0xc);
+  printf("hash : %s\n",local_10);
+  iVar1 = strcmp("f87cd601aa7fedca99018a8be88eda34",local_10);
+  return iVar1 == 0;
+}

@@ -1,0 +1,10 @@
+void correct(void)
+
+{
+  if (input._0_4_ == -0x21524111) {
+    puts("Congratulation! you are good!");
+    system("/bin/sh");
+  }
+                    /* WARNING: Subroutine does not return */
+  exit(0);
+}

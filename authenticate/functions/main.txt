@@ -1,0 +1,28 @@
+undefined4 main(void)
+
+{
+  int iVar1;
+  void *local_38;
+  undefined local_32 [30];
+  uint local_14;
+  
+  memset(local_32,0,0x1e);
+  setvbuf((FILE *)stdout,(char *)0x0,2,0);
+  setvbuf((FILE *)stdin,(char *)0x0,1,0);
+  printf("Authenticate : ");
+  __isoc99_scanf(&DAT_080da6b5,local_32);
+  memset(input,0,0xc);
+  local_38 = (void *)0x0;
+  local_14 = Base64Decode(local_32,&local_38);
+  if (local_14 < 0xd) {
+    memcpy(input,local_38,local_14);
+    iVar1 = auth(local_14);
+    if (iVar1 == 1) {
+      correct();
+    }
+  }
+  else {
+    puts("Wrong Length");
+  }
+  return 0;
+}
